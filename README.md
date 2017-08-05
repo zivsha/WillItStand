@@ -17,21 +17,21 @@ Using CH and COM find balancing facets
 
 
 ### Mesh Processing
-Created an OBJ file parser from scratch, needed to implement some geometric representation classes: Vector, Matrix, Polygon3D and Geometric tools for 2D and 3D calculations.
+A minimalistic OBJ file parser was created, with some additional implementation of some geometric representation classes: Vector, Matrix, Polygon3D and Geometric tools for 2D and 3D calculations.
 
 <img realwidth="1500" cropx="-36" cropy="49.981" realheight="708" originalsrc="http://lh3.googleusercontent.com/b7WbtYqVTIriuG4ce0r0OHkYJl0_mMmFWm0ULxMJOOqjE2jn-uBxg0pj82j78qrvLtFNd193LVQ47_SoRIEEbzuXDw=s538" src="http://lh3.googleusercontent.com/b7WbtYqVTIriuG4ce0r0OHkYJl0_mMmFWm0ULxMJOOqjE2jn-uBxg0pj82j78qrvLtFNd193LVQ47_SoRIEEbzuXDw=s538" style="position:absolute;left:-36px;top:50px;width:538px;height:254px;">
 
 ### Convex Hull Calculation
-Used Qhull under copying right (http://www.qhull.org/COPYING.txt) to get the convex hull of the processed mesh. Qhull have a very un-intuitive library/API and lack proper documentation.
+Used Qhull under copying right (http://www.qhull.org/COPYING.txt) to get the convex hull of the processed mesh. Qhull have a very un-intuitive library/API and lack proper documentation so after finding out how to use it for our needs I answered a [relevant StackOverflow question](https://stackoverflow.com/a/29311240/2523211)
 
 <img realwidth="1500" cropx="-51.5" cropy="42.681" realheight="708" originalsrc="http://lh3.googleusercontent.com/4LxT1gRV9d-ENaJFScmS68XWOzSP1eE03-ScJ_h9YR4C3HAdy4uudoSt9Ea4xK9qlUqK49p6VLGIGo3N4Ep8pmqqddU=s569" src="http://lh3.googleusercontent.com/4LxT1gRV9d-ENaJFScmS68XWOzSP1eE03-ScJ_h9YR4C3HAdy4uudoSt9Ea4xK9qlUqK49p6VLGIGo3N4Ep8pmqqddU=s569" style="position:absolute;left:-51px;top:43px;width:569px;height:269px;">
 
 ### Center of Mass Calculation
-Used Fast and Accurate Computation of Polyhedral Mass Properties (Brian Mirtich) source code.
+To calculate the center of mass, we used `volInt.c` (one of its versions can be found [here](https://github.com/OpenFOAM/OpenFOAM-2.1.x/blob/master/src/meshTools/momentOfInertia/volumeIntegration/volInt.c)), the source code of [Fast and Accurate Computation of Polyhedral Mass Properties](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.56.127&rep=rep1&type=pdf) by Brian Mirtich .
 
 
 ### Finding Balancing Faces
-An O(n) algorithm where n =number of facets of the convex hull.
+An O(N) algorithm where N is the number of facets of the convex hull.
 
 <img realwidth="1098" cropx="0" cropy="21.968579234972676" realheight="312" originalsrc="http://lh3.googleusercontent.com/GfoXh58w3UrGlpjNLxhUoLq-UhWacGSz3_f0UYKiuUze3Hbl1u3C_7Wi0CXTHe_Zmuagf4bMumWcEUG8XPn2RbZ-=s571" src="http://lh3.googleusercontent.com/GfoXh58w3UrGlpjNLxhUoLq-UhWacGSz3_f0UYKiuUze3Hbl1u3C_7Wi0CXTHe_Zmuagf4bMumWcEUG8XPn2RbZ-=s571" style="position:absolute;left:0px;top:22px;width:571px;height:162px;">
 
